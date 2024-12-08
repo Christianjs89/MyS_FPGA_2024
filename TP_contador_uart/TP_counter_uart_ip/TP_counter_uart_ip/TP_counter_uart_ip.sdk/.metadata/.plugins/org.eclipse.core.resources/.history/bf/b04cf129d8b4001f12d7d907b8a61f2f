@@ -1,0 +1,9 @@
+/*
+ * counter.c
+ *
+ *  Created on: Dec 7, 2024
+ *      Author: chris
+ */
+
+#include "uart_counter_ip.h"
+

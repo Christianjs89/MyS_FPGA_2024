@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2018.1 (64-bit)
+# SW Build 2188600 on Wed Apr  4 18:40:38 MDT 2018
+# IP Build 2185939 on Wed Apr  4 20:55:05 MDT 2018
+# Start of session at: Thu Dec  5 18:32:46 2024
+# Process ID: 9044
+# Current directory: C:/Users/chris/Documents/FPGA/negador/negador.runs/impl_1
+# Command line: vivado.exe -log negador_vio.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source negador_vio.tcl -notrace
+# Log file: C:/Users/chris/Documents/FPGA/negador/negador.runs/impl_1/negador_vio.vdi
+# Journal file: C:/Users/chris/Documents/FPGA/negador/negador.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source negador_vio.tcl -notrace

@@ -1,0 +1,41 @@
+/*
+ * counter.c
+ *
+ *  Created on: Dec 7, 2024
+ *      Author: chris
+ */
+
+#include "uart_counter_ip.h"
+#include "xil_io.h"
+#include "xparameters.h"
+#include <sleep.h>
+
+
+
+
+int main(void){
+
+	xil_printf("-- Inicio programa contador --\r\n");
+
+	char command = 'u';
+	// send up command
+	UART_COUNTER_IP_mWriteReg(XPAR_UART_COUNTER_IP_0_S_AXI_BASEADDR, UART_COUNTER_IP_S_AXI_SLV_REG0_OFFSET, command);
+	// set ready flag
+	UART_COUNTER_IP_mWriteReg(XPAR_UART_COUNTER_IP_0_S_AXI_BASEADDR, UART_COUNTER_IP_S_AXI_SLV_REG1_OFFSET, 1);
+	usleep(1000);
+	// reset ready flag
+	UART_COUNTER_IP_mWriteReg(XPAR_UART_COUNTER_IP_0_S_AXI_BASEADDR, UART_COUNTER_IP_S_AXI_SLV_REG1_OFFSET, 0);
+	usleep(1000);
+
+	xil_printf("\r\n> Counter started!\r\n");
+
+	int i = 0;
+	while(1){
+
+		xil_printf(".");
+//		xil_printf("\r\n> %i", i);
+		i++;
+		sleep(1);
+		if(i == 20) xil_printf("\r\n");
+	}
+}

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7z010clg400-1" LaunchTime="1733444115">
+  <File Type="ROUTE-PWR" Name="negador_vio_power_routed.rpt"/>
+  <File Type="PA-TCL" Name="negador_vio.tcl"/>
+  <File Type="PWROPT-DCP" Name="negador_vio_pwropt.dcp"/>
+  <File Type="ROUTE-PWR-SUM" Name="negador_vio_power_summary_routed.pb"/>
+  <File Type="REPORTS-TCL" Name="negador_vio_reports.tcl"/>
+  <File Type="BG-DRC" Name="negador_vio.drc"/>
+  <File Type="OPT-HWDEF" Name="negador_vio.hwdef"/>
+  <File Type="OPT-DCP" Name="negador_vio_opt.dcp"/>
+  <File Type="OPT-DRC" Name="negador_vio_drc_opted.rpt"/>
+  <File Type="PLACE-DCP" Name="negador_vio_placed.dcp"/>
+  <File Type="PLACE-IO" Name="negador_vio_io_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="negador_vio_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="negador_vio_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="negador_vio_control_sets_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="negador_vio_incremental_reuse_pre_placed.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="negador_vio_postplace_pwropt.dcp"/>
+  <File Type="PHYSOPT-DCP" Name="negador_vio_physopt.dcp"/>
+  <File Type="BG-BIT" Name="negador_vio.bit"/>
+  <File Type="ROUTE-ERROR-DCP" Name="negador_vio_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="negador_vio_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="negador_vio_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="negador_vio_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="negador_vio_drc_routed.pb"/>
+  <File Type="ROUTE-DRC-RPX" Name="negador_vio_drc_routed.rpx"/>
+  <File Type="BITSTR-MSK" Name="negador_vio.msk"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="negador_vio_methodology_drc_routed.rpt"/>
+  <File Type="BG-BGN" Name="negador_vio.bgn"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="negador_vio_methodology_drc_routed.rpx"/>
+  <File Type="BITSTR-RBT" Name="negador_vio.rbt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="negador_vio_methodology_drc_routed.pb"/>
+  <File Type="BG-BIN" Name="negador_vio.bin"/>
+  <File Type="ROUTE-PWR-RPX" Name="negador_vio_power_routed.rpx"/>
+  <File Type="ROUTE-STATUS" Name="negador_vio_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="negador_vio_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="negador_vio_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="negador_vio_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="negador_vio_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-CLK" Name="negador_vio_clock_utilization_routed.rpt"/>
+  <File Type="RDI-RDI" Name="negador_vio.vdi"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="negador_vio_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="negador_vio_postroute_physopt_bb.dcp"/>
+  <File Type="BITSTR-NKY" Name="negador_vio.nky"/>
+  <File Type="BITSTR-BMM" Name="negador_vio_bd.bmm"/>
+  <File Type="BITSTR-MMI" Name="negador_vio.mmi"/>
+  <File Type="BITSTR-LTX" Name="negador_vio.ltx"/>
+  <File Type="BITSTR-SYSDEF" Name="negador_vio.sysdef"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PPRDIR/negador.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/negador_vio_top.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="negador_vio"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/imports/Source/Arty-Z7-10-Master_ORIGINAL.xdc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="Z:/10_Circuitos_Logicos/Codigos/Source/Arty-Z7-10-Master_ORIGINAL.xdc"/>
+        <Attr Name="ImportTime" Val="1728670693"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018"/>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="vio_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="ila_0"/>
+</GenRun>

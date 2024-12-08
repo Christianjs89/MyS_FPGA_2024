@@ -1,0 +1,109 @@
+/*
+ * counter.c
+ *
+ *  Created on: Dec 7, 2024
+ *      Author: chris
+ */
+
+#include "uart_counter_ip.h"
+#include "xil_io.h"
+#include "xparameters.h"
+#include <sleep.h>
+#include "xuartps_hw.h"
+#include "xuartps.h"
+
+/* T=1/125E6 = 0.008 us 1 clock cycle para disparar el process()
+ * delay [us] para que el hardware procese el READY y lea la instruccion del contador */
+#define READYDELAY 1
+
+
+/* PROTOTIPOS */
+void print_command(u8 command);
+void process_command(u8 comand);
+
+
+/* MAIN */
+int main(void){
+	u8 rxByte = '\0'; // buffer para recibir byte por UART
+	char textBuffer[30]; // buffer para cargar el texto descriptivo del comando recibido
+
+	xil_printf("\r\n-- Inicio programa contador uart --\r\n");
+	xil_printf("\r\n> Comandos: [u] UP | [D] DOWN | [r] RESET | [p] PAUSE\r\n");
+
+//	char command = 'u';
+//	// send up command
+//	UART_COUNTER_IP_mWriteReg(XPAR_UART_COUNTER_IP_0_S_AXI_BASEADDR, UART_COUNTER_IP_S_AXI_SLV_REG0_OFFSET, command);
+//	// set ready flag
+//	UART_COUNTER_IP_mWriteReg(XPAR_UART_COUNTER_IP_0_S_AXI_BASEADDR, UART_COUNTER_IP_S_AXI_SLV_REG1_OFFSET, 1);
+//	usleep(1); // T=1/125E6 = 0.008 us 1 clock cycle needed to trigger the process
+//	// reset ready flag
+//	UART_COUNTER_IP_mWriteReg(XPAR_UART_COUNTER_IP_0_S_AXI_BASEADDR, UART_COUNTER_IP_S_AXI_SLV_REG1_OFFSET, 0);
+//	usleep(1);
+//	xil_printf("\r\n> Counting UP!\r\n");
+
+	// enter a key
+//	xil_printf("\r\n> Enter a key: ");
+//	rxByte = XUartPs_RecvByte(XPAR_PS7_UART_0_BASEADDR);
+//	xil_printf("%c\r\n=====\r\n", rxByte);
+
+
+	// superloop
+	while(1){
+		// prompt de usuario
+		xil_printf("\r\n> Ingrese un comando: ");
+		// recibir byte en polling mode por uart
+		rxByte = XUartPs_RecvByte(XPAR_PS7_UART_0_BASEADDR); // direccion base UART0 definida en xparameters.h
+		// imprimir mensaje de commando por pantalla
+		xil_printf("%c --> ", rxByte); // echo del byte recibido
+		print_command(rxByte); // imprimir descripcion del comando
+		// escribir comando por bus AXI al bloque ip
+		process_command(rxByte);
+		usleep(1000);
+	}
+}
+
+
+/* DEFINICION FUNCIONES */
+
+/* Imprimir en pantalla la descripcion del comando ingresado */
+void print_command(u8 command){
+	char * text = "\1xb[31mComando desconodido\1xb[0m";
+
+	switch(command){
+	case 'u':
+		text = "Cuenta ascendente";
+		break;
+	case 'd':
+		text = "Cuenta descendente";
+		break;
+	case 'r':
+		text = "Reset a 0";
+		break;
+	case 'p':
+		text = "Contador pausado";
+		break;
+	default:
+		// nada
+		break;
+	}
+	// imprimir texto en terminal
+	xil_printf(text);
+}
+
+
+/* Procesar el comando y escribir al registro correspondiente del bus AXI*/
+void process_command(u8 comand){
+	// escribir comando en registro 0
+	UART_COUNTER_IP_mWriteReg(XPAR_UART_COUNTER_IP_0_S_AXI_BASEADDR, UART_COUNTER_IP_S_AXI_SLV_REG0_OFFSET, command);
+	// set ready flag - registro 1
+	UART_COUNTER_IP_mWriteReg(XPAR_UART_COUNTER_IP_0_S_AXI_BASEADDR, UART_COUNTER_IP_S_AXI_SLV_REG1_OFFSET, 1);
+	usleep(READYDELAY);
+	// reset ready flag - registro 1
+	UART_COUNTER_IP_mWriteReg(XPAR_UART_COUNTER_IP_0_S_AXI_BASEADDR, UART_COUNTER_IP_S_AXI_SLV_REG1_OFFSET, 0);
+	usleep(READYDELAY);
+}
+
+
+
+
+

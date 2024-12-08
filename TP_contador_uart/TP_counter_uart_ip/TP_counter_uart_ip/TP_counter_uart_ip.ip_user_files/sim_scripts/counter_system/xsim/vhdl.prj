@@ -1,0 +1,10 @@
+vhdl xil_defaultlib  \
+"../../../bd/counter_system/ipshared/26c6/hdl/uart_counter_ip_v1_0_S_AXI.vhd" \
+"../../../bd/counter_system/ipshared/26c6/src/counter.vhd" \
+"../../../bd/counter_system/ipshared/26c6/hdl/uart_counter_ip_v1_0.vhd" \
+"../../../bd/counter_system/ip/counter_system_uart_counter_ip_0_0/sim/counter_system_uart_counter_ip_0_0.vhd" \
+"../../../bd/counter_system/ip/counter_system_rst_ps7_0_100M_0/sim/counter_system_rst_ps7_0_100M_0.vhd" \
+"../../../bd/counter_system/ip/counter_system_vio_0_0/sim/counter_system_vio_0_0.vhd" \
+"../../../bd/counter_system/sim/counter_system.vhd" \
+
+nosort

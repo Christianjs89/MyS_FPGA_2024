@@ -1,0 +1,93 @@
+/*
+ * counter.c
+ *
+ *  Created on: Dec 7, 2024
+ *      Author: chris
+ */
+
+#include "uart_counter_ip.h"
+#include "xil_io.h"
+#include "xparameters.h"
+#include <sleep.h>
+#include "xuartps_hw.h"
+#include "xuartps.h"
+
+// prototipos
+void process_command(u8 command, char * text);
+
+
+
+
+int main(void){
+	u8 rxByte = '\0'; // buffer para recibir byte por UART
+	char textBuffer[30] = {'\0'}; // buffer para cargar el texto descriptivo del comando recibido
+
+	xil_printf("\r\n-- Inicio programa contador uart --\r\n");
+	xil_printf("\r\n> Comandos: [u] UP | [D] DOWN | [r] RESET | [p] PAUSE\r\n");
+
+	char command = 'u';
+	// send up command
+	UART_COUNTER_IP_mWriteReg(XPAR_UART_COUNTER_IP_0_S_AXI_BASEADDR, UART_COUNTER_IP_S_AXI_SLV_REG0_OFFSET, command);
+	// set ready flag
+	UART_COUNTER_IP_mWriteReg(XPAR_UART_COUNTER_IP_0_S_AXI_BASEADDR, UART_COUNTER_IP_S_AXI_SLV_REG1_OFFSET, 1);
+	usleep(1); // T=1/125E6 = 0.008 us 1 clock cycle needed to trigger the process
+	// reset ready flag
+	UART_COUNTER_IP_mWriteReg(XPAR_UART_COUNTER_IP_0_S_AXI_BASEADDR, UART_COUNTER_IP_S_AXI_SLV_REG1_OFFSET, 0);
+	usleep(1);
+
+	xil_printf("\r\n> Counting UP!\r\n");
+
+	// enter a key
+//	xil_printf("\r\n> Enter a key: ");
+//	rxByte = XUartPs_RecvByte(XPAR_PS7_UART_0_BASEADDR);
+//	xil_printf("%c\r\n=====\r\n", rxByte);
+
+//	int i = 0;
+	// superloop
+	while(1){
+
+		xil_printf("\r\n> Ingrese un comando: ");
+		rxByte = XUartPs_RecvByte(XPAR_PS7_UART_0_BASEADDR); // direccion base UART0 definida en xparameters.h
+		process_command(rxByte, &textBuffer);
+		xil_printf("%c --> %s", rxByte, textBuffer);
+
+//		xil_printf(".");
+//		i++;
+//		sleep(1);
+//		if(i == 20){
+//			xil_printf("\r\n");
+//			i = 0;
+//		}
+	}
+}
+
+void process_command(u8 command, char * text){
+	text = "Comando desconodido";
+
+	switch(command){
+	case 'u':
+		text = "Cuenta ascendente";
+		break;
+	case 'd':
+		text = "Cuenta descendente";
+		break;
+	case 'r':
+		text = "Reset a 0";
+		break;
+	case 'p':
+		text = "Contador pausado";
+		break;
+	default:
+		// nada
+		break;
+	}
+
+}
+
+
+
+
+
+
+
+

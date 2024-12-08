@@ -1,0 +1,26 @@
+/*
+ * counter.c
+ *
+ *  Created on: Dec 7, 2024
+ *      Author: chris
+ */
+
+#include "uart_counter_ip.h"
+#include "xil_io.h"
+#include "xparameters.h"
+#include <sleep.h>
+
+
+
+int main(void){
+
+	xil_printf("-- Inicio programa contador --\r\n");
+
+	int i = 0;
+	while(1){
+
+		xil_printf("\r\n> %i", i);
+		i++;
+		sleep(1);
+	}
+}

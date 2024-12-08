@@ -1,0 +1,9 @@
+vhdl xil_defaultlib  \
+"../../../bd/sum_system/ipshared/b4b0/hdl/sum_ip_v1_0_S_AXI.vhd" \
+"../../../bd/sum_system/ipshared/b4b0/hdl/sum_ip_v1_0.vhd" \
+"../../../bd/sum_system/ipshared/b4b0/src/sum_user_logic.vhd" \
+"../../../bd/sum_system/ip/sum_system_sum_ip_0_0/sim/sum_system_sum_ip_0_0.vhd" \
+"../../../bd/sum_system/ip/sum_system_rst_ps7_0_100M_0/sim/sum_system_rst_ps7_0_100M_0.vhd" \
+"../../../bd/sum_system/sim/sum_system.vhd" \
+
+nosort

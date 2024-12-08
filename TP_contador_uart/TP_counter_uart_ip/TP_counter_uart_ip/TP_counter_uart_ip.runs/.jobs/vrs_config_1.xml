@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="0">
+	<Run Id="counter_system_processing_system7_0_0_synth_1" LaunchDir="C:/Users/chris/Documents/FPGA/TP_contador_uart/TP_counter_uart_ip/TP_counter_uart_ip/TP_counter_uart_ip.runs/counter_system_processing_system7_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="counter_system_uart_counter_ip_0_0_synth_1" LaunchDir="C:/Users/chris/Documents/FPGA/TP_contador_uart/TP_counter_uart_ip/TP_counter_uart_ip/TP_counter_uart_ip.runs/counter_system_uart_counter_ip_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="counter_system_rst_ps7_0_100M_0_synth_1" LaunchDir="C:/Users/chris/Documents/FPGA/TP_contador_uart/TP_counter_uart_ip/TP_counter_uart_ip/TP_counter_uart_ip.runs/counter_system_rst_ps7_0_100M_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="counter_system_vio_0_0_synth_1" LaunchDir="C:/Users/chris/Documents/FPGA/TP_contador_uart/TP_counter_uart_ip/TP_counter_uart_ip/TP_counter_uart_ip.runs/counter_system_vio_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="counter_system_auto_pc_0_synth_1" LaunchDir="C:/Users/chris/Documents/FPGA/TP_contador_uart/TP_counter_uart_ip/TP_counter_uart_ip/TP_counter_uart_ip.runs/counter_system_auto_pc_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+</Runs>
+
